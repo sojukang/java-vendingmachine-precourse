@@ -47,4 +47,8 @@ public class VendingMachine {
 		}
 			items.sellItem(itemName, userMoney);
 	}
+
+	public boolean canNotBuyAnything(UserMoney userMoney, Items items) {
+		return userMoney.canNotBuy(items.minPrice()) || items.allOutOfStock();
+	}
 }

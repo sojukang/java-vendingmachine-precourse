@@ -73,4 +73,12 @@ public class Item {
 	private void subCount() {
 		count--;
 	}
+
+	public int compareMinPrice(int minPrice) {
+		return Math.min(price, minPrice);
+	}
+
+	public boolean isOutOfStock() {
+		return count == 0;
+	}
 }

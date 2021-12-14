@@ -19,4 +19,8 @@ public class UserMoney {
 	public void buy(int price) {
 		userMoney -= price;
 	}
+
+	public boolean canNotBuy(int minPrice) {
+		return userMoney < minPrice;
+	}
 }

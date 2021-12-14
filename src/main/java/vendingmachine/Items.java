@@ -39,4 +39,21 @@ public class Items {
 			}
 		}
 	}
+
+	public int minPrice() {
+		int minPrice = Integer.MAX_VALUE;
+		for (Item item : items) {
+			minPrice = item.compareMinPrice(minPrice);
+		}
+		return minPrice;
+	}
+
+	public boolean allOutOfStock() {
+		for (Item item : items) {
+			if (!item.isOutOfStock()) {
+				return false;
+			}
+		}
+		return true;
+	}
 }
