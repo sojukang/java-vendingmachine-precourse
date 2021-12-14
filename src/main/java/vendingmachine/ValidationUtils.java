@@ -13,9 +13,9 @@ public class ValidationUtils {
 		}
 	}
 
-	public static void validNumberFormat(String num) {
+	public static int validNumberFormat(String num) {
 		try {
-			 Integer.parseInt(num);
+			 return Integer.parseInt(num);
 		} catch (IllegalArgumentException e) {
 			throw new IllegalArgumentException(ERROR_NOT_NUMBER);
 		}
