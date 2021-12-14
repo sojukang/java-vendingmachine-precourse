@@ -25,4 +25,15 @@ public class ValidationUtilsTest {
 			ValidationUtils.validNumberFormat(num2);
 		}).isInstanceOf(IllegalArgumentException.class);
 	}
+
+	@Test
+	@DisplayName("입력이 자연수가 아닌 경우 테스트")
+	void isPositiveTest() {
+		int num = 0;
+		int num2 = -1;
+		assertThatThrownBy(() -> {
+			ValidationUtils.isPositive(num);
+			ValidationUtils.isPositive(num2);
+		}).isInstanceOf(IllegalArgumentException.class);
+	}
 }
