@@ -14,4 +14,15 @@ public class ValidationUtilsTest {
 			ValidationUtils.validUnitMoney(money);
 		}).isInstanceOf(IllegalArgumentException.class);
 	}
+
+	@Test
+	@DisplayName("숫자가 아닌 경우 테스트")
+	void validNumberFormatTest() {
+		String num = "a1";
+		String num2 = "[[]";
+		assertThatThrownBy(() -> {
+			ValidationUtils.validNumberFormat(num);
+			ValidationUtils.validNumberFormat(num2);
+		}).isInstanceOf(IllegalArgumentException.class);
+	}
 }

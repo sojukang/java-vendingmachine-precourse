@@ -9,4 +9,8 @@ public class ValidationUtils {
 			throw new IllegalArgumentException(ERROR_NOT_MATCH_UNIT_MONEY);
 		}
 	}
+
+	public static int validNumberFormat(String num) {
+		return Integer.parseInt(num);
+	}
 }
