@@ -23,4 +23,8 @@ public class UserMoney {
 	public boolean canNotBuy(int minPrice) {
 		return userMoney < minPrice;
 	}
+
+	public int getUserMoney() {
+		return userMoney;
+	}
 }

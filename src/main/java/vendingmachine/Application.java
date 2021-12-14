@@ -6,6 +6,9 @@ public class Application {
         int remains = InputView.getRemains();
         Items items = getItems();
         UserMoney userMoney = new UserMoney(InputView.GetUserMoney());
+        while (!machine.canNotBuyAnything(userMoney, items)) {
+            machine.buyItem(InputView.getItemToBuy(userMoney), items, userMoney);
+        }
     }
 
     public static Items getItems() {
