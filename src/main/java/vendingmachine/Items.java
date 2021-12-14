@@ -8,13 +8,13 @@ public class Items {
 	private List<Item> items = new ArrayList<>();
 
 	public void addItem(Item newItem) {
-		if (hasItem(newItem)) {
+		if (isAlreadyInStock(newItem)) {
 			throw new IllegalArgumentException(ERROR_ALREADY_IN_STOCK);
 		}
 		items.add(newItem);
 	}
 
-	private boolean hasItem(Item newItem) {
+	private boolean isAlreadyInStock(Item newItem) {
 		for (Item item : items) {
 			if (item.sameName(newItem)) {
 				return true;
