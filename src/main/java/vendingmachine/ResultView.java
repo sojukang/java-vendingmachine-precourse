@@ -15,9 +15,12 @@ public class ResultView {
 	}
 
 	public static void printChange(UserMoney userMoney, HashMap<Integer, Integer> change) {
-		System.out.println("\n투입 금액: " + userMoney.getUserMoney() + "원\n" + "잔돈");
 		for (Map.Entry<Integer, Integer> entrySet : change.entrySet()) {
 			System.out.println(entrySet.getKey() + "원 - " + entrySet.getValue() + "개");
 		}
+	}
+
+	public static void printRemainUserMoney(UserMoney userMoney) {
+		System.out.println("\n투입 금액: " + userMoney.getUserMoney() + "원\n" + "잔돈");
 	}
 }

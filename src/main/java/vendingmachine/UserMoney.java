@@ -31,8 +31,6 @@ public class UserMoney {
 	}
 
 	public int getNoOfChange(int coinValue) {
-		System.out.println("userMoney: " + userMoney + " amount: " + coinValue);
-		System.out.println(this.userMoney % coinValue);
-		return this.userMoney % coinValue;
+		return this.userMoney / coinValue;
 	}
 }

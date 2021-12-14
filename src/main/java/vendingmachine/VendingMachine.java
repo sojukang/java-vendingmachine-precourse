@@ -58,16 +58,10 @@ public class VendingMachine {
 		int coinCount;
 		for (Coin coin : this.coins) {
 			coinCount = coin.toChange(userMoney);
-			System.out.println("coinCount: " + coinCount);
 			if (coinCount > 0) {
-				System.out.println("??");
 				change.put(coin.getValue(), coinCount);
 			}
 		}
-		System.out.println(change.get(500));
-		System.out.println(change.get(100));
-		System.out.println(change.get(50));
-		System.out.println(change.get(10));
 		return change;
 	}
 }

@@ -26,11 +26,9 @@ public enum Coin {
     }
 
     public int toChange(UserMoney userMoney) {
-        int coinCount = userMoney.getNoOfChange(amount);
-        System.out.println("coinCount in to Change: " + coinCount);
+        int coinCount = Math.min(count, userMoney.getNoOfChange(amount));
         userMoney.buy(coinCount * amount);
         subCount(coinCount);
-        System.out.println(amount + "coinCount: " + this.count);
         return coinCount;
     }
 
@@ -41,6 +39,4 @@ public enum Coin {
     public int getCount() {
         return this.count;
     }
-
-    // 추가 기능 구현
 }

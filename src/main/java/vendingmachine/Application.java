@@ -10,6 +10,7 @@ public class Application {
         while (!machine.canNotBuyAnything(userMoney, items)) {
             machine.buyItem(InputView.getItemToBuy(userMoney), items, userMoney);
         }
+        ResultView.printRemainUserMoney(userMoney);
         ResultView.printChange(userMoney, machine.returnChange(userMoney));
     }
 
