@@ -3,6 +3,12 @@ package vendingmachine;
 import static vendingmachine.ValidationUtils.*;
 
 public class UserMoney {
+	private final int userMoney;
+
+	public UserMoney(int userInputMoney) {
+		userMoney = userInputMoney;
+	}
+
 	public static int valid(String UserInputMoney) {
 		int userMoney = validNumberFormat(UserInputMoney);
 		validUnitMoney(userMoney);

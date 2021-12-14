@@ -2,7 +2,10 @@ package vendingmachine;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        VendingMachine machine = new VendingMachine();
+        int remains = InputView.getRemains();
+        Items items = getItems();
+        UserMoney userMoney = new UserMoney(InputView.GetUserMoney());
     }
 
     public static Items getItems() {
