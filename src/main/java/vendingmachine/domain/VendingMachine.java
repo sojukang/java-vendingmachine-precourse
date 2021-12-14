@@ -5,6 +5,7 @@ import static camp.nextstep.edu.missionutils.Randoms.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class VendingMachine {
@@ -53,8 +54,8 @@ public class VendingMachine {
 		return userMoney.canNotBuy(items.minPrice()) || items.allOutOfStock();
 	}
 
-	public HashMap<Integer, Integer> returnChange(UserMoney userMoney) {
-		HashMap<Integer, Integer> change = new HashMap<>();
+	public LinkedHashMap<Integer, Integer> returnChange(UserMoney userMoney) {
+		LinkedHashMap<Integer, Integer> change = new LinkedHashMap<>();
 		int coinCount;
 		for (Coin coin : this.coins) {
 			coinCount = coin.toChange(userMoney);

@@ -1,6 +1,7 @@
 package vendingmachine.view;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,7 +18,7 @@ public class ResultView {
 		}
 	}
 
-	public static void printChange(HashMap<Integer, Integer> change) {
+	public static void printChange(LinkedHashMap<Integer, Integer> change) {
 		for (Map.Entry<Integer, Integer> entrySet : change.entrySet()) {
 			System.out.println(entrySet.getKey() + "원 - " + entrySet.getValue() + "개");
 		}
