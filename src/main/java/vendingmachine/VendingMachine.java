@@ -8,6 +8,7 @@ import java.util.List;
 
 public class VendingMachine {
 	private static final int GENERATE_ALL_COINS = 0;
+	private static final String ERROR_NOT_IN_STOCK = "[ERROR] 해당 상품이 없습니다.";
 	private List<Coin> coins;
 
 	private int generateRandomCoin() {
@@ -38,5 +39,12 @@ public class VendingMachine {
 				coin.addCount(1);
 			}
 		}
+	}
+
+	public void buyItem(String itemName, Items items, UserMoney userMoney) {
+		if (!items.hasItem(itemName)) {
+			throw new IllegalArgumentException(ERROR_NOT_IN_STOCK);
+		}
+			items.sellItem(itemName, userMoney);
 	}
 }

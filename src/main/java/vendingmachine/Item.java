@@ -8,7 +8,7 @@ public class Item {
 
 	private final String name;
 	private final int price;
-	private final int count;
+	private int count;
 
 	public Item(String InputItemStatus) {
 		String[] itemStatus =  validItemStatus(InputItemStatus);
@@ -63,5 +63,14 @@ public class Item {
 	@Override
 	public int hashCode() {
 		return Objects.hash(name);
+	}
+
+	public void sell(UserMoney userMoney) {
+		subCount();
+		userMoney.buy(price);
+	}
+
+	private void subCount() {
+		count--;
 	}
 }

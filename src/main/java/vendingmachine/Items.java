@@ -31,4 +31,12 @@ public class Items {
 		}
 		return false;
 	}
+
+	public void sellItem(String itemName, UserMoney userMoney) {
+		for (Item item : items) {
+			if (item.hasStock(itemName)) {
+				item.sell(userMoney);
+			}
+		}
+	}
 }

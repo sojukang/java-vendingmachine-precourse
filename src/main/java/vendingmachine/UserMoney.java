@@ -3,7 +3,7 @@ package vendingmachine;
 import static vendingmachine.ValidationUtils.*;
 
 public class UserMoney {
-	private final int userMoney;
+	private int userMoney;
 
 	public UserMoney(int userInputMoney) {
 		userMoney = userInputMoney;
@@ -14,5 +14,9 @@ public class UserMoney {
 		validUnitMoney(userMoney);
 		isPositive(userMoney);
 		return userMoney;
+	}
+
+	public void buy(int price) {
+		userMoney -= price;
 	}
 }
