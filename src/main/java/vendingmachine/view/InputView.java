@@ -1,6 +1,8 @@
-package vendingmachine;
+package vendingmachine.view;
 
 import static camp.nextstep.edu.missionutils.Console.*;
+
+import vendingmachine.domain.UserMoney;
 
 public class InputView {
 	private static final String GET_ITEM_TO_ADD = "\n상품명과 가격, 수량을 입력해 주세요.";

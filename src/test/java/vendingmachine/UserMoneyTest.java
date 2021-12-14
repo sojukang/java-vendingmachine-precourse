@@ -5,6 +5,8 @@ import static org.assertj.core.api.AssertionsForClassTypes.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import vendingmachine.domain.UserMoney;
+
 public class UserMoneyTest {
 	@Test
 	@DisplayName("투입 금액 예외 처리")

@@ -5,6 +5,8 @@ import static org.assertj.core.api.AssertionsForClassTypes.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import vendingmachine.domain.Item;
+
 public class ItemTest {
 	@Test
 	@DisplayName("상품명 공백인지 확인")
