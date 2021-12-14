@@ -16,7 +16,7 @@ public class InputView {
 		return readLine();
 	}
 
-	public static int GetUserMoney() {
+	public static int getUserMoney() {
 		return getUserInput(GET_USER_MONEY);
 	}
 

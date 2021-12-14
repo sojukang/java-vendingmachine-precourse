@@ -43,7 +43,7 @@ public class Item {
 	}
 
 	public boolean hasStock(String itemName) {
-		return name.equals(itemName) && count > 0;
+		return name.equals(itemName) && this.count > 0;
 	}
 
 	public boolean sameName(Item newItem) {
@@ -71,7 +71,7 @@ public class Item {
 	}
 
 	private void subCount() {
-		count--;
+		this.count--;
 	}
 
 	public int compareMinPrice(int minPrice) {
@@ -79,6 +79,6 @@ public class Item {
 	}
 
 	public boolean isOutOfStock() {
-		return count == 0;
+		return this.count == 0;
 	}
 }

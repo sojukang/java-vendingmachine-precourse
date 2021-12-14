@@ -6,7 +6,7 @@ public class UserMoney {
 	private int userMoney;
 
 	public UserMoney(int userInputMoney) {
-		userMoney = userInputMoney;
+		this.userMoney = userInputMoney;
 	}
 
 	public static int valid(String UserInputMoney) {
@@ -17,14 +17,22 @@ public class UserMoney {
 	}
 
 	public void buy(int price) {
-		userMoney -= price;
+		if (this.userMoney >= price) {
+			this.userMoney -= price;
+		}
 	}
 
 	public boolean canNotBuy(int minPrice) {
-		return userMoney < minPrice;
+		return this.userMoney < minPrice;
 	}
 
 	public int getUserMoney() {
-		return userMoney;
+		return this.userMoney;
+	}
+
+	public int getNoOfChange(int coinValue) {
+		System.out.println("userMoney: " + userMoney + " amount: " + coinValue);
+		System.out.println(this.userMoney % coinValue);
+		return this.userMoney % coinValue;
 	}
 }

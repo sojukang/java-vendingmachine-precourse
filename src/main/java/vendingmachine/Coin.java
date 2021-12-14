@@ -22,7 +22,24 @@ public enum Coin {
     }
 
     public void addCount(int addCount) {
-        count += addCount;
+        this.count += addCount;
+    }
+
+    public int toChange(UserMoney userMoney) {
+        int coinCount = userMoney.getNoOfChange(amount);
+        System.out.println("coinCount in to Change: " + coinCount);
+        userMoney.buy(coinCount * amount);
+        subCount(coinCount);
+        System.out.println(amount + "coinCount: " + this.count);
+        return coinCount;
+    }
+
+    private void subCount(int subCount) {
+        this.count -= subCount;
+    }
+
+    public int getCount() {
+        return this.count;
     }
 
     // 추가 기능 구현

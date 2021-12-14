@@ -4,12 +4,13 @@ import static camp.nextstep.edu.missionutils.Randoms.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class VendingMachine {
 	private static final int GENERATE_ALL_COINS = 0;
 	private static final String ERROR_NOT_IN_STOCK = "[ERROR] 해당 상품이 없습니다.";
-	private List<Coin> coins;
+	private List<Coin> coins = new ArrayList<>();
 
 	private int generateRandomCoin() {
 		List<Integer> coins = new ArrayList<>();
@@ -29,8 +30,8 @@ public class VendingMachine {
 			remains -= newCoin;
 			addCoinCount(coinList, newCoin);
 		}
-		coins = coinList;
-		return coins;
+		this.coins = coinList;
+		return coinList;
 	}
 
 	private void addCoinCount(List<Coin> coinList, int coinValue) {
@@ -50,5 +51,23 @@ public class VendingMachine {
 
 	public boolean canNotBuyAnything(UserMoney userMoney, Items items) {
 		return userMoney.canNotBuy(items.minPrice()) || items.allOutOfStock();
+	}
+
+	public HashMap<Integer, Integer> returnChange(UserMoney userMoney) {
+		HashMap<Integer, Integer> change = new HashMap<>();
+		int coinCount;
+		for (Coin coin : this.coins) {
+			coinCount = coin.toChange(userMoney);
+			System.out.println("coinCount: " + coinCount);
+			if (coinCount > 0) {
+				System.out.println("??");
+				change.put(coin.getValue(), coinCount);
+			}
+		}
+		System.out.println(change.get(500));
+		System.out.println(change.get(100));
+		System.out.println(change.get(50));
+		System.out.println(change.get(10));
+		return change;
 	}
 }

@@ -4,11 +4,13 @@ public class Application {
     public static void main(String[] args) {
         VendingMachine machine = new VendingMachine();
         int remains = InputView.getRemains();
+        ResultView.printRemainCoins(machine.generateRemainCoins(remains));
         Items items = getItems();
-        UserMoney userMoney = new UserMoney(InputView.GetUserMoney());
+        UserMoney userMoney = new UserMoney(InputView.getUserMoney());
         while (!machine.canNotBuyAnything(userMoney, items)) {
             machine.buyItem(InputView.getItemToBuy(userMoney), items, userMoney);
         }
+        ResultView.printChange(userMoney, machine.returnChange(userMoney));
     }
 
     public static Items getItems() {
