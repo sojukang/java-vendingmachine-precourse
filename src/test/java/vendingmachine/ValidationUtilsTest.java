@@ -36,4 +36,13 @@ public class ValidationUtilsTest {
 			ValidationUtils.isPositive(num2);
 		}).isInstanceOf(IllegalArgumentException.class);
 	}
+
+	@Test
+	@DisplayName("입력이 공백인 경우 테스트")
+	void isBlankTest() {
+		String input = "";
+		assertThatThrownBy(() -> {
+			ValidationUtils.isBlank(input);
+		}).isInstanceOf(IllegalArgumentException.class);
+	}
 }

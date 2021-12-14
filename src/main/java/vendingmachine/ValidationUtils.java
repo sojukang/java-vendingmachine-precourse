@@ -5,6 +5,7 @@ public class ValidationUtils {
 	private static final String ERROR_NOT_MATCH_UNIT_MONEY = "[ERROR] 금액은 10원 단위여야 합니다.";
 	private static final String ERROR_NOT_NUMBER = "[ERROR] 금액은 숫자여야 합니다.";
 	private static final String ERROR_NOT_POSITIVE = "[ERROR] 0 이상의 숫자여야 합니다.";
+	private static final String ERROR_IS_BLANK = "[ERROR] 빈 문자열 입력입니다.";
 
 	public static void validUnitMoney(int money) {
 		if (money % 10 != 0) {
@@ -28,5 +29,11 @@ public class ValidationUtils {
 
 	public static void main(String[] args) {
 		validNumberFormat("a1");
+	}
+
+	public static void isBlank(String input) {
+		if (input.isEmpty()) {
+			throw new IllegalArgumentException(ERROR_IS_BLANK);
+		}
 	}
 }
