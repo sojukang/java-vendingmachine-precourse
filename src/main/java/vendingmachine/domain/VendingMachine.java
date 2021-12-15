@@ -4,14 +4,12 @@ import static camp.nextstep.edu.missionutils.Randoms.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
 
 public class VendingMachine {
 	private static final int GENERATE_ALL_COINS = 0;
 	private static final String ERROR_NOT_IN_STOCK = "[ERROR] 해당 상품이 없습니다.";
-	private List<Coin> coins;
+	private Coins coins;
 	private UserMoney userMoney;
 	private Items items;
 
@@ -27,46 +25,38 @@ public class VendingMachine {
 		return pickNumberInList(coins);
 	}
 
-	public List<Coin> generateRemainCoins(int remains) {
+	public Coins generateRemainCoins(int remains) {
 		List<Coin> coinList = Arrays.asList(Coin.values());
+		Coins coins = new Coins(coinList);
 		while (remains != GENERATE_ALL_COINS) {
 			int newCoin = generateRandomCoin();
 			if (remains < newCoin) {
 				continue;
 			}
 			remains -= newCoin;
-			addCoinCount(coinList, newCoin);
+			coins.addCount(newCoin, 1);
 		}
-		this.coins = coinList;
-		return coinList;
-	}
-
-	private void addCoinCount(List<Coin> coinList, int coinValue) {
-		for (Coin coin : coinList) {
-			if (coin.sameValue(coinValue)) {
-				coin.addCount(1);
-			}
-		}
+		return coins;
 	}
 
 	public void buyItem(String itemName) {
 		if (!items.hasItem(itemName)) {
 			throw new IllegalArgumentException(ERROR_NOT_IN_STOCK);
 		}
-			items.sellItem(itemName, userMoney);
+		items.sellItem(itemName, userMoney);
 	}
 
 	public boolean canNotBuyAnything() {
 		return userMoney.canNotBuy(items.minPrice()) || items.allOutOfStock();
 	}
 
-	public LinkedHashMap<Integer, Integer> returnChange() {
-		LinkedHashMap<Integer, Integer> change = new LinkedHashMap<>();
+	public Coins returnChange() {
+		Coins change = new Coins();
 		int coinCount;
-		for (Coin coin : this.coins) {
-			coinCount = coin.toChange(userMoney);
+		for (int coin : this.coins.keySet()) {
+			coinCount = coins.toChange(coin, userMoney);
 			if (coinCount > 0) {
-				change.put(coin.getValue(), coinCount);
+				change.addCount(coin, coinCount);
 			}
 		}
 		return change;
@@ -84,7 +74,7 @@ public class VendingMachine {
 		return this.userMoney.getUserMoney();
 	}
 
-	public List<Coin> getRaminCoins() {
+	public Coins getRemainCoins() {
 		return this.coins;
 	}
 }

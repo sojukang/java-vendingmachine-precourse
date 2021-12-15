@@ -9,7 +9,7 @@ import vendingmachine.view.ResultView;
 public class Application {
 	public static void main(String[] args) {
 		VendingMachine machine = new VendingMachine(InputView.getRemains());
-		ResultView.printRemainCoins(machine.getRaminCoins());
+		ResultView.printRemainCoins(machine.getRemainCoins());
 		machine.saveInStock(getItems());
 		machine.registerUserMoney(new UserMoney(InputView.getUserMoney()));
 		while (!machine.canNotBuyAnything() && canGetItemToBuy(machine))

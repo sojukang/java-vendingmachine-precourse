@@ -1,25 +1,21 @@
 package vendingmachine.view;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
-import vendingmachine.domain.Coin;
-import vendingmachine.domain.UserMoney;
+import vendingmachine.domain.Coins;
 import vendingmachine.domain.VendingMachine;
 
 public class ResultView {
 	private static final String REMAINS_MESSAGE = "\n자판기가 보유한 동전";
 
-	public static void printRemainCoins(List<Coin> remainCoins) {
+	public static void printRemainCoins(Coins remainCoins) {
 		System.out.println(REMAINS_MESSAGE);
-		for (Coin coin : remainCoins) {
-			System.out.println(coin.getValue() + "원 - " + coin.getCount() + "개");
+		for (Map.Entry<Integer, Integer> entrySet : remainCoins.entrySet()) {
+			System.out.println(entrySet.getKey() + "원 - " + entrySet.getValue() + "개");
 		}
 	}
 
-	public static void printChange(LinkedHashMap<Integer, Integer> change) {
+	public static void printChange(Coins change) {
 		for (Map.Entry<Integer, Integer> entrySet : change.entrySet()) {
 			System.out.println(entrySet.getKey() + "원 - " + entrySet.getValue() + "개");
 		}
