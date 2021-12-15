@@ -15,8 +15,7 @@ public class Application {
 		while (machine.canBuyAnything()) {
 			GetItemToBuy(machine);
 		}
-		ResultView.printRemainUserMoney(machine);
-		ResultView.printChange(machine.returnChange());
+		ResultView.printChange(machine);
 	}
 
 	public static Items getItems() {

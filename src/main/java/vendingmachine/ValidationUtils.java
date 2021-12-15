@@ -5,8 +5,6 @@ import vendingmachine.view.Messages;
 
 public class ValidationUtils {
 
-
-
 	public static void validUnitMoney(int money) {
 		if (money % 10 != 0) {
 			throw new IllegalArgumentException(Messages.ERROR_NOT_MATCH_UNIT_MONEY);

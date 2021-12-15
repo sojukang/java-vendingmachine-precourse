@@ -11,4 +11,5 @@ public class Messages {
 	public static final String GET_REMAINS = "자판기가 보유하고 있는 금액을 입력해 주세요.";
 	public static final String GET_ITEM_TO_BUY = "구매할 상품명을 입력해 주세요.";
 	public static final String ERROR_NOT_IN_STOCK = "[ERROR] 해당 상품이 없습니다.";
+	public static final String REMAINS_MESSAGE = "\n자판기가 보유한 동전";
 }
