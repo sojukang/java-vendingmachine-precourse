@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class Coins {
-	private Map<Integer, Integer> coins;
+	private final Map<Integer, Integer> coins;
 
 	public Coins() {
 		Comparator<Integer> comparator = Comparator.reverseOrder();
