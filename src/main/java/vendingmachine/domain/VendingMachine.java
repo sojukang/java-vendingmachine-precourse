@@ -52,12 +52,8 @@ public class VendingMachine {
 
 	public Coins returnChange() {
 		Coins change = new Coins();
-		int coinCount;
 		for (int coin : this.coins.keySet()) {
-			coinCount = coins.toChange(coin, userMoney);
-			if (coinCount > 0) {
-				change.addCount(coin, coinCount);
-			}
+			change.addCount(coin, coins.getCount(coin, userMoney));
 		}
 		return change;
 	}

@@ -17,14 +17,16 @@ public class Coins {
 	}
 
 	public void addCount(int newCoin, int coinCount) {
-		coins.put(newCoin, coins.get(newCoin) + coinCount);
+		if (coinCount > 0) {
+			coins.put(newCoin, coins.get(newCoin) + coinCount);
+		}
 	}
 
 	public Iterable<? extends Integer> keySet() {
 		return coins.keySet();
 	}
 
-	public int toChange(int coin, UserMoney userMoney) {
+	public int getCount(int coin, UserMoney userMoney) {
 		int coinCount = Math.min(coins.get(coin), userMoney.getNoOfChange(coin));
 		userMoney.buy(coinCount * coin);
 		coins.put(coin, coins.get(coin) - coinCount);
