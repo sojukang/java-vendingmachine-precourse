@@ -1,23 +1,19 @@
 package vendingmachine.domain;
 
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.Comparator;
 import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 public class Coins {
-
-	private HashMap<Integer, Integer> coins;
-
-	public Coins(List<Coin> coinList) {
-		this.coins = new HashMap<>();
-		coinList.stream()
+	private Map<Integer, Integer> coins;
+	public Coins() {
+		Comparator<Integer> comparator = Comparator.reverseOrder();
+		this.coins = new TreeMap<>(comparator);
+		Arrays.stream(Coin.values())
 			.filter(coin -> coins.get(coin.getValue()) == null)
 			.forEach(coin -> coins.put(coin.getValue(), 0));
-	}
-
-	public Coins() {
-		this(Arrays.asList(Coin.values()));
 	}
 
 	public void addCount(int newCoin, int coinCount) {

@@ -6,9 +6,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import vendingmachine.view.Messages;
+
 public class VendingMachine {
 	private static final int GENERATE_ALL_COINS = 0;
-	private static final String ERROR_NOT_IN_STOCK = "[ERROR] 해당 상품이 없습니다.";
 	private Coins coins;
 	private UserMoney userMoney;
 	private Items items;
@@ -26,8 +27,7 @@ public class VendingMachine {
 	}
 
 	public Coins generateRemainCoins(int remains) {
-		List<Coin> coinList = Arrays.asList(Coin.values());
-		Coins coins = new Coins(coinList);
+		Coins coins = new Coins();
 		while (remains != GENERATE_ALL_COINS) {
 			int newCoin = generateRandomCoin();
 			if (remains < newCoin) {
@@ -41,7 +41,7 @@ public class VendingMachine {
 
 	public void buyItem(String itemName) {
 		if (!items.hasItem(itemName)) {
-			throw new IllegalArgumentException(ERROR_NOT_IN_STOCK);
+			throw new IllegalArgumentException(Messages.ERROR_NOT_IN_STOCK);
 		}
 		items.sellItem(itemName, userMoney);
 	}
