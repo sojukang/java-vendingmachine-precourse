@@ -12,7 +12,9 @@ public class Application {
 		ResultView.printRemainCoins(machine.getRemainCoins());
 		machine.saveInStock(getItems());
 		machine.registerUserMoney(new UserMoney(InputView.getUserMoney()));
-		while (!machine.canNotBuyAnything() && canGetItemToBuy(machine))
+		while (!machine.canNotBuyAnything()) {
+			canGetItemToBuy(machine);
+		}
 		ResultView.printRemainUserMoney(machine);
 		ResultView.printChange(machine.returnChange());
 	}
