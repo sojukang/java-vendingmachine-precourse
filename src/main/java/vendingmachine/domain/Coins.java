@@ -3,11 +3,11 @@ package vendingmachine.domain;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Map;
-import java.util.SortedMap;
 import java.util.TreeMap;
 
 public class Coins {
 	private Map<Integer, Integer> coins;
+
 	public Coins() {
 		Comparator<Integer> comparator = Comparator.reverseOrder();
 		this.coins = new TreeMap<>(comparator);

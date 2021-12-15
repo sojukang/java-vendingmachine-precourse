@@ -12,8 +12,8 @@ public class Application {
 		ResultView.printRemainCoins(machine.getRemainCoins());
 		machine.saveInStock(getItems());
 		machine.registerUserMoney(new UserMoney(InputView.getUserMoney()));
-		while (!machine.canNotBuyAnything()) {
-			canGetItemToBuy(machine);
+		while (machine.canBuyAnything()) {
+			GetItemToBuy(machine);
 		}
 		ResultView.printRemainUserMoney(machine);
 		ResultView.printChange(machine.returnChange());
@@ -33,7 +33,7 @@ public class Application {
 		}
 	}
 
-	public static boolean canGetItemToBuy(VendingMachine machine) {
+	public static boolean GetItemToBuy(VendingMachine machine) {
 		while (true) {
 			try {
 				String inputMoney = InputView.getItemToBuy(machine);

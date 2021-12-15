@@ -46,8 +46,8 @@ public class VendingMachine {
 		items.sellItem(itemName, userMoney);
 	}
 
-	public boolean canNotBuyAnything() {
-		return userMoney.canNotBuy(items.minPrice()) || items.allOutOfStock();
+	public boolean canBuyAnything() {
+		return !userMoney.canNotBuy(items.minPrice()) && !items.allOutOfStock();
 	}
 
 	public Coins returnChange() {
