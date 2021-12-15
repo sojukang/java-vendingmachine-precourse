@@ -6,6 +6,7 @@ import java.util.Objects;
 
 public class Item {
 
+	private static final String ERROR_WRONG_INPUT = "[ERROR] 잘못된 입력입니다.";
 	private final String name;
 	private final int price;
 	private int count;
@@ -35,11 +36,18 @@ public class Item {
 	}
 
 	public static String[] validItemStatus(String itemString) {
+		validItemStatusFormat(itemString);
 		String[] itemStatus = itemString.substring(1, itemString.length() - 1).split(",");
 		validName(itemStatus[0]);
 		validPrice(itemStatus[1]);
 		validCount(itemStatus[2]);
 		return itemStatus;
+	}
+
+	private static void validItemStatusFormat(String itemString) {
+		if (itemString.charAt(0) != '[' || itemString.charAt(itemString.length() - 1) != ']') {
+			throw new IllegalArgumentException(ERROR_WRONG_INPUT);
+		}
 	}
 
 	public boolean hasStock(String itemName) {

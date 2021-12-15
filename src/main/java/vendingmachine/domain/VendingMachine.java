@@ -11,7 +11,13 @@ import java.util.List;
 public class VendingMachine {
 	private static final int GENERATE_ALL_COINS = 0;
 	private static final String ERROR_NOT_IN_STOCK = "[ERROR] 해당 상품이 없습니다.";
-	private List<Coin> coins = new ArrayList<>();
+	private List<Coin> coins;
+	private UserMoney userMoney;
+	private Items items;
+
+	public VendingMachine(int remains) {
+		this.coins = generateRemainCoins(remains);
+	}
 
 	private int generateRandomCoin() {
 		List<Integer> coins = new ArrayList<>();
@@ -43,18 +49,18 @@ public class VendingMachine {
 		}
 	}
 
-	public void buyItem(String itemName, Items items, UserMoney userMoney) {
+	public void buyItem(String itemName) {
 		if (!items.hasItem(itemName)) {
 			throw new IllegalArgumentException(ERROR_NOT_IN_STOCK);
 		}
 			items.sellItem(itemName, userMoney);
 	}
 
-	public boolean canNotBuyAnything(UserMoney userMoney, Items items) {
+	public boolean canNotBuyAnything() {
 		return userMoney.canNotBuy(items.minPrice()) || items.allOutOfStock();
 	}
 
-	public LinkedHashMap<Integer, Integer> returnChange(UserMoney userMoney) {
+	public LinkedHashMap<Integer, Integer> returnChange() {
 		LinkedHashMap<Integer, Integer> change = new LinkedHashMap<>();
 		int coinCount;
 		for (Coin coin : this.coins) {
@@ -64,5 +70,21 @@ public class VendingMachine {
 			}
 		}
 		return change;
+	}
+
+	public void saveInStock(Items items) {
+		this.items = items;
+	}
+
+	public void registerUserMoney(UserMoney userMoney) {
+		this.userMoney = userMoney;
+	}
+
+	public int getRemainUserMoney() {
+		return this.userMoney.getUserMoney();
+	}
+
+	public List<Coin> getRaminCoins() {
+		return this.coins;
 	}
 }

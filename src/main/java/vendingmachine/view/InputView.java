@@ -2,7 +2,9 @@ package vendingmachine.view;
 
 import static camp.nextstep.edu.missionutils.Console.*;
 
+import vendingmachine.ValidationUtils;
 import vendingmachine.domain.UserMoney;
+import vendingmachine.domain.VendingMachine;
 
 public class InputView {
 	private static final String GET_ITEM_TO_ADD = "\n상품명과 가격, 수량을 입력해 주세요.";
@@ -22,13 +24,15 @@ public class InputView {
 		return getUserInput(GET_USER_MONEY);
 	}
 
-	private static int getUserInput(String getUserInput) {
-		while(true) {
+	private static int getUserInput(String getUserInputMessage) {
+		while (true) {
 			try {
-				System.out.println(getUserInput);
+				System.out.println(getUserInputMessage);
 				String userInput = readLine();
 				return UserMoney.valid(userInput);
-			} catch (IllegalArgumentException e) {}
+			} catch (IllegalArgumentException e) {
+				System.out.println(e.getMessage());
+			}
 		}
 	}
 
@@ -36,9 +40,9 @@ public class InputView {
 		return getUserInput(GET_REMAINS);
 	}
 
-	public static String getItemToBuy(UserMoney userMoney) {
-		System.out.println("\n투입 금액: " + userMoney.getUserMoney() + "원");
+	public static String getItemToBuy(VendingMachine machine) {
+		System.out.println("\n투입 금액: " + machine.getRemainUserMoney() + "원");
 		System.out.println(GET_ITEM_TO_BUY);
 		return readLine();
+		}
 	}
-}

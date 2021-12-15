@@ -1,6 +1,5 @@
 package vendingmachine;
 
-import vendingmachine.domain.Item;
 import vendingmachine.domain.Items;
 import vendingmachine.domain.UserMoney;
 import vendingmachine.domain.VendingMachine;
@@ -9,25 +8,38 @@ import vendingmachine.view.ResultView;
 
 public class Application {
 	public static void main(String[] args) {
-		VendingMachine machine = new VendingMachine();
-		int remains = InputView.getRemains();
-		ResultView.printRemainCoins(machine.generateRemainCoins(remains));
-		Items items = getItems();
-		UserMoney userMoney = new UserMoney(InputView.getUserMoney());
-		while (!machine.canNotBuyAnything(userMoney, items)) {
-			machine.buyItem(InputView.getItemToBuy(userMoney), items, userMoney);
-		}
-		ResultView.printRemainUserMoney(userMoney);
-		ResultView.printChange(machine.returnChange(userMoney));
+		VendingMachine machine = new VendingMachine(InputView.getRemains());
+		ResultView.printRemainCoins(machine.getRaminCoins());
+		machine.saveInStock(getItems());
+		machine.registerUserMoney(new UserMoney(InputView.getUserMoney()));
+		while (!machine.canNotBuyAnything() && canGetItemToBuy(machine))
+		ResultView.printRemainUserMoney(machine);
+		ResultView.printChange(machine.returnChange());
 	}
 
 	public static Items getItems() {
-		InputView.printGetItemToAdd();
-		String[] itemToAdd = InputView.getItemToAdd().split(";");
-		Items items = new Items();
-		for (String itemStatus : itemToAdd) {
-			items.addItem(new Item(itemStatus));
+		while (true) {
+			try {
+				InputView.printGetItemToAdd();
+				String[] itemToAdd = ValidationUtils.validItemsInput(InputView.getItemToAdd());
+				Items items = new Items();
+				items.addItems(itemToAdd);
+				return items;
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
 		}
-		return items;
+	}
+
+	public static boolean canGetItemToBuy(VendingMachine machine) {
+		while (true) {
+			try {
+				String inputMoney = InputView.getItemToBuy(machine);
+				machine.buyItem(inputMoney);
+				return true;
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+		}
 	}
 }

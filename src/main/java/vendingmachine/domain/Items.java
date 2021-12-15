@@ -56,4 +56,10 @@ public class Items {
 		}
 		return true;
 	}
+
+	public void addItems(String[] itemToAdd) {
+		for (String itemStatus : itemToAdd) {
+			addItem(new Item(itemStatus));
+		}
+	}
 }
