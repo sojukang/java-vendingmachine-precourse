@@ -5,6 +5,8 @@ import static org.assertj.core.api.AssertionsForClassTypes.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import vendingmachine.domain.UserMoney;
+
 public class ValidationUtilsTest {
 	@Test
 	@DisplayName("금액 10으로 나누어 떨어지는지 테스트")
@@ -43,6 +45,19 @@ public class ValidationUtilsTest {
 		String input = "";
 		assertThatThrownBy(() -> {
 			ValidationUtils.isBlank(input);
+		}).isInstanceOf(IllegalArgumentException.class);
+	}
+
+	@Test
+	@DisplayName("입력 금액 예외 처리")
+	void validTest() {
+		String UserInputMoney = "5";
+		String UserInputMoney2 = "-1";
+		String UserInputMoney3 = "a1";
+		assertThatThrownBy(() -> {
+			ValidationUtils.validMoneyInput(UserInputMoney);
+			ValidationUtils.validMoneyInput(UserInputMoney2);
+			ValidationUtils.validMoneyInput(UserInputMoney3);
 		}).isInstanceOf(IllegalArgumentException.class);
 	}
 }

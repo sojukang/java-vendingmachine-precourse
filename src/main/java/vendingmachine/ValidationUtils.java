@@ -42,4 +42,11 @@ public class ValidationUtils {
 			throw new IllegalArgumentException(Messages.ERROR_WRONG_INPUT);
 		}
 	}
+
+	public static int validMoneyInput(String UserInputMoney) {
+		int userMoney = validNumberFormat(UserInputMoney);
+		validUnitMoney(userMoney);
+		isPositive(userMoney);
+		return userMoney;
+	}
 }

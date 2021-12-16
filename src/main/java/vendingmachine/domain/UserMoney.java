@@ -1,19 +1,10 @@
 package vendingmachine.domain;
 
-import static vendingmachine.ValidationUtils.*;
-
 public class UserMoney {
 	private int userMoney;
 
 	public UserMoney(int userInputMoney) {
 		this.userMoney = userInputMoney;
-	}
-
-	public static int valid(String UserInputMoney) {
-		int userMoney = validNumberFormat(UserInputMoney);
-		validUnitMoney(userMoney);
-		isPositive(userMoney);
-		return userMoney;
 	}
 
 	public void buy(int price) {
