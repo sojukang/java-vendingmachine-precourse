@@ -4,15 +4,16 @@ import static vendingmachine.ValidationUtils.*;
 
 import java.util.Objects;
 
+import vendingmachine.view.Messages;
+
 public class Item {
 
-	private static final String ERROR_WRONG_INPUT = "[ERROR] 잘못된 입력입니다.";
 	private final String name;
 	private final int price;
 	private int count;
 
 	public Item(String InputItemStatus) {
-		String[] itemStatus =  validItemStatus(InputItemStatus);
+		String[] itemStatus = validItemStatus(InputItemStatus);
 		this.name = itemStatus[0];
 		this.price = Integer.parseInt(itemStatus[1]);
 		this.count = Integer.parseInt(itemStatus[2]);
@@ -46,7 +47,7 @@ public class Item {
 
 	private static void validItemStatusFormat(String itemString) {
 		if (itemString.charAt(0) != '[' || itemString.charAt(itemString.length() - 1) != ']') {
-			throw new IllegalArgumentException(ERROR_WRONG_INPUT);
+			throw new IllegalArgumentException(Messages.ERROR_WRONG_INPUT);
 		}
 	}
 

@@ -51,11 +51,7 @@ public class VendingMachine {
 	}
 
 	public Coins returnChange() {
-		Coins change = new Coins();
-		for (int coin : this.coins.keySet()) {
-			change.addCount(coin, coins.getCount(coin, userMoney));
-		}
-		return change;
+		return this.coins.getChange(this.userMoney);
 	}
 
 	public void saveInStock(Items items) {

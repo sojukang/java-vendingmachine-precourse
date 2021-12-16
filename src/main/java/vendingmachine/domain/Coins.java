@@ -33,6 +33,14 @@ public class Coins {
 		return coinCount;
 	}
 
+	public Coins getChange(UserMoney userMoney) {
+		Coins change = new Coins();
+		for (int coin : this.coins.keySet()) {
+			change.addCount(coin, getCount(coin, userMoney));
+		}
+		return change;
+	}
+
 	public Iterable<? extends Map.Entry<Integer, Integer>> entrySet() {
 		return coins.entrySet();
 	}

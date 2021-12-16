@@ -3,13 +3,14 @@ package vendingmachine.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import vendingmachine.view.Messages;
+
 public class Items {
-	private static final String ERROR_ALREADY_IN_STOCK = "[ERROR] 이미 해당 상품이 존재합니다.";
 	private List<Item> items = new ArrayList<>();
 
 	public void addItem(Item newItem) {
 		if (isAlreadyInStock(newItem)) {
-			throw new IllegalArgumentException(ERROR_ALREADY_IN_STOCK);
+			throw new IllegalArgumentException(Messages.ERROR_ALREADY_IN_STOCK);
 		}
 		items.add(newItem);
 	}
