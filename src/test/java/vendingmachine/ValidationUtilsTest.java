@@ -4,8 +4,11 @@ import static org.assertj.core.api.AssertionsForClassTypes.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import vendingmachine.domain.UserMoney;
+import vendingmachine.view.Messages;
 
 public class ValidationUtilsTest {
 	@Test
@@ -17,14 +20,12 @@ public class ValidationUtilsTest {
 		}).isInstanceOf(IllegalArgumentException.class);
 	}
 
-	@Test
+	@ParameterizedTest
+	@ValueSource(strings = {"a", "[", ""})
 	@DisplayName("숫자가 아닌 경우 테스트")
-	void validNumberFormatTest() {
-		String num = "a1";
-		String num2 = "[[]";
+	void validNumberFormatTest(String input) {
 		assertThatThrownBy(() -> {
-			ValidationUtils.validNumberFormat(num);
-			ValidationUtils.validNumberFormat(num2);
+			ValidationUtils.validNumberFormat(input);
 		}).isInstanceOf(IllegalArgumentException.class);
 	}
 
@@ -43,21 +44,18 @@ public class ValidationUtilsTest {
 	@DisplayName("입력이 공백인 경우 테스트")
 	void isBlankTest() {
 		String input = "";
-		assertThatThrownBy(() -> {
-			ValidationUtils.isBlank(input);
-		}).isInstanceOf(IllegalArgumentException.class);
+		assertThatThrownBy(() -> ValidationUtils.isBlank(input)).isInstanceOf(IllegalArgumentException.class)
+			.hasMessage(Messages.ERROR_IS_BLANK);
+		assertThatCode(() -> ValidationUtils.isBlank("String"))
+			.doesNotThrowAnyException();
 	}
 
-	@Test
+	@ParameterizedTest
+	@ValueSource(strings = {"5", "-1", "a", "["})
 	@DisplayName("입력 금액 예외 처리")
-	void validTest() {
-		String UserInputMoney = "5";
-		String UserInputMoney2 = "-1";
-		String UserInputMoney3 = "a1";
+	void validTest(String input) {
 		assertThatThrownBy(() -> {
-			ValidationUtils.validMoneyInput(UserInputMoney);
-			ValidationUtils.validMoneyInput(UserInputMoney2);
-			ValidationUtils.validMoneyInput(UserInputMoney3);
+			ValidationUtils.validMoneyInput(input);
 		}).isInstanceOf(IllegalArgumentException.class);
 	}
 }
