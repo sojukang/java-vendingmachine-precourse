@@ -2,21 +2,27 @@ package vendingmachine.domain;
 
 import static vendingmachine.ValidationUtils.*;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import vendingmachine.view.Messages;
 
 public class Item {
 
+	private static final int INDEX_NAME = 0;
+	private static final int INDEX_PRICE = 1;
+	private static final int INDEX_COUNT = 2;
 	private final String name;
 	private final int price;
 	private int count;
 
 	public Item(String InputItemStatus) {
-		String[] itemStatus = validItemStatus(InputItemStatus);
-		this.name = itemStatus[0];
-		this.price = Integer.parseInt(itemStatus[1]);
-		this.count = Integer.parseInt(itemStatus[2]);
+		List<String> itemStatus = validItemStatus(InputItemStatus);
+		this.name = itemStatus.get(INDEX_NAME);
+		this.price = Integer.parseInt(itemStatus.get(INDEX_PRICE));
+		this.count = Integer.parseInt(itemStatus.get(INDEX_COUNT));
 	}
 
 	public static void validName(String name) {
@@ -35,13 +41,24 @@ public class Item {
 		int itemCount = validNumberFormat(count);
 		isPositive(itemCount);
 	}
+	private static String removeBracket(String itemString) {
+		return itemString.substring(1, itemString.length() - 1);
+	}
 
-	public static String[] validItemStatus(String itemString) {
+	private static String[] splitByComma(String itemString) {
+		return itemString.split(",");
+	}
+
+	private static List<String> trimItemStatus(String[] itemStatus) {
+		return Stream.of(itemStatus).map(item -> item.trim()).collect(Collectors.toList());
+	}
+
+	public static List<String> validItemStatus(String itemString) {
 		validItemStatusFormat(itemString);
-		String[] itemStatus = itemString.substring(1, itemString.length() - 1).split(",");
-		validName(itemStatus[0]);
-		validPrice(itemStatus[1]);
-		validCount(itemStatus[2]);
+		List<String> itemStatus = trimItemStatus(splitByComma(removeBracket(itemString)));
+		validName(itemStatus.get(INDEX_NAME));
+		validPrice(itemStatus.get(INDEX_PRICE));
+		validCount(itemStatus.get(INDEX_COUNT));
 		return itemStatus;
 	}
 
