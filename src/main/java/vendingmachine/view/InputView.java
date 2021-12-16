@@ -2,6 +2,7 @@ package vendingmachine.view;
 
 import static camp.nextstep.edu.missionutils.Console.*;
 
+import vendingmachine.ValidationUtils;
 import vendingmachine.domain.UserMoney;
 import vendingmachine.domain.VendingMachine;
 
@@ -16,15 +17,19 @@ public class InputView {
 	}
 
 	public static int getUserMoney() {
-		return getUserInput(Messages.GET_USER_MONEY);
+		return repeatInput(Messages.GET_USER_MONEY);
 	}
 
-	private static int getUserInput(String getUserInputMessage) {
+	public static int getUserInput(String getUserInputMessage) {
+			System.out.println(getUserInputMessage);
+			String userInput = readLine();
+			return ValidationUtils.validMoneyInput(userInput);
+	}
+
+	private static int repeatInput(String message) {
 		while (true) {
 			try {
-				System.out.println(getUserInputMessage);
-				String userInput = readLine();
-				return UserMoney.valid(userInput);
+				return getUserInput(message);
 			} catch (IllegalArgumentException e) {
 				System.out.println(e.getMessage());
 			}
@@ -32,7 +37,7 @@ public class InputView {
 	}
 
 	public static int getRemains() {
-		return getUserInput(Messages.GET_REMAINS);
+		return repeatInput(Messages.GET_REMAINS);
 	}
 
 	public static String getItemToBuy(VendingMachine machine) {
