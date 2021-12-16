@@ -1,25 +1,23 @@
 package vendingmachine;
 
-import static camp.nextstep.edu.missionutils.Console.*;
 import static org.assertj.core.api.AssertionsForClassTypes.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import vendingmachine.view.InputView;
-import vendingmachine.view.Messages;
 
 public class InputViewTest {
-	@Test
-	void getUserMoneyTest() {
-		String Input = "a";
-		InputStream in = new ByteArrayInputStream(Input.getBytes());
+	@ParameterizedTest
+	@ValueSource(strings = {"a", "1", " ", "-1", "5"})
+	void getUserMoneyTest(String input) {
+		InputStream in = new ByteArrayInputStream(input.getBytes());
 		System.setIn(in);
 		assertThatThrownBy(() -> {
 			InputView.getUserInput("");
-		}).isInstanceOf(IllegalArgumentException.class)
-			.hasMessage(Messages.ERROR_NOT_NUMBER);
+		}).isInstanceOf(IllegalArgumentException.class);
 	}
 }
