@@ -12,5 +12,9 @@ public enum Coin {
         this.amount = amount;
     }
 
+    public Integer getValue() {
+        return amount;
+    }
+
     // 추가 기능 구현
 }
