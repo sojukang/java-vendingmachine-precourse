@@ -22,7 +22,7 @@ public class UserMoney implements Gettable {
 	}
 
 	public boolean canNotBuy(int minPrice) {
-		return userMoney <= minPrice;
+		return userMoney < minPrice;
 	}
 
 	public int getNoOfChange(int coinValue) {
