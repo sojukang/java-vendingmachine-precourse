@@ -10,14 +10,19 @@ import vendingmachine.model.gettable.UserMoney;
 
 public class Coins {
 
+	private static final boolean NO_INIT_ZERO = false;
 	private Map<Integer, Integer> coins;
 
 	public Coins() {
-		Comparator<Integer> comparator = Comparator.reverseOrder();
-		this.coins = new TreeMap<>(comparator);
+		this(NO_INIT_ZERO);
 		Arrays.stream(Coin.values())
 			.filter(coin -> coins.get(coin.getValue()) == null)
 			.forEach(coin -> coins.put(coin.getValue(), 0));
+	}
+
+	public Coins(boolean init_indicator) {
+		Comparator<Integer> comparator = Comparator.reverseOrder();
+		this.coins = new TreeMap<>(comparator);
 	}
 
 	public void addCount(int coinVal, int count) {
@@ -27,11 +32,17 @@ public class Coins {
 	}
 
 	public Coins getChange(UserMoney userMoney) {
-		Coins change = new Coins();
+		Coins change = new Coins(NO_INIT_ZERO);
 		for (int coin : this.coins.keySet()) {
-			change.addCount(coin, getCount(coin, userMoney));
+			change.put(coin, getCount(coin, userMoney));
 		}
 		return change;
+	}
+
+	private void put(int coin, int count) {
+		if (count > 0) {
+			this.coins.put(coin, count);
+		}
 	}
 
 	private int getCount(int coinVal, UserMoney userMoney) {
