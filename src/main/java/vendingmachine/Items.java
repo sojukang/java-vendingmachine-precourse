@@ -3,7 +3,7 @@ package vendingmachine;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Items {
+public class Items implements Gettable{
 	private final Map<String, Item> items;
 
 	public Items(String userInputItems) {
@@ -12,6 +12,10 @@ public class Items {
 		for (String newItem : itemsToAdd) {
 			this.items.put(Parser.parseName(newItem), new Item(newItem));
 		}
+	}
+
+	public Items() {
+		items = null;
 	}
 
 	public void buyItem(String itemName, UserMoney userMoney) {
@@ -42,5 +46,13 @@ public class Items {
 			minPrice = item.compareMinPrice(minPrice);
 		}
 		return minPrice;
+	}
+
+	@Override
+	public void check(String input) {
+		String[] itemsToAdd = Parser.splitBySemicolon(input);
+		for (String itemString : itemsToAdd) {
+			Item.validItemStatus(itemString);
+		}
 	}
 }

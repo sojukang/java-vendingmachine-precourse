@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Item {
+	private static final int ALL_PROPERTIES = 3;
 	private final String name;
 	private final int price;
 	private int count;
@@ -31,12 +32,19 @@ public class Item {
 		isPositive(count);
 	}
 
-	public List<String> validItemStatus(String input) {
+	public static List<String> validItemStatus(String input) {
 		List<String> itemStatus = Parser.parseItemStatus(input);
+		GotAllProperties(itemStatus);
 		validName(itemStatus.get(Index.NAME));
 		validPrice(itemStatus.get(Index.PRICE));
 		validCount(itemStatus.get(Index.COUNT));
 		return itemStatus;
+	}
+
+	private static void GotAllProperties(List<String> itemStatus) {
+		if (itemStatus.size() != ALL_PROPERTIES) {
+			throw new IllegalArgumentException(Messages.ERROR_INVALID_ITEM);
+		}
 	}
 
 	public void buy(UserMoney userMoney) {

@@ -29,5 +29,7 @@ public class InputView {
 		return repeatInput(Messages.GET_USER_MONEY, new UserMoney());
 	}
 
-
+	public static String getItemStatus() {
+		return repeatInput(Messages.GET_ITEM_STATUS, new Items());
+	}
 }
