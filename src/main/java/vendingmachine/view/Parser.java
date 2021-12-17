@@ -19,7 +19,7 @@ public class Parser {
 		if (input.charAt(Index.LEFT_BRACKET) != '[' || input.charAt(Index.RIGHT_BRACKET(input)) != ']') {
 			throw new IllegalArgumentException(Messages.Error.INVALID_ITEM);
 		}
-		return input.substring(Index.LEFT_BRACKET, Index.RIGHT_BRACKET(input));
+		return input.substring(Index.AFTER_LEFT_BRACKET, Index.RIGHT_BRACKET(input));
 	}
 
 	public static List<String> removeBlank(String[] input) {
