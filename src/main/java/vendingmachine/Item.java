@@ -5,7 +5,7 @@ import static vendingmachine.ValidationUtils.*;
 import java.util.List;
 import java.util.Objects;
 
-public class Item {
+public class Item implements Gettable {
 	private static final int ALL_PROPERTIES = 3;
 	private final String name;
 	private final int price;
@@ -16,6 +16,11 @@ public class Item {
 		this.name = itemStatus.get(Index.NAME);
 		this.price = Integer.parseInt(itemStatus.get(Index.PRICE));
 		this.count = Integer.parseInt(itemStatus.get(Index.COUNT));
+	}
+
+	public Item() {
+		name = null;
+		price = 0;
 	}
 
 	private static void validName(String name) {
@@ -84,5 +89,10 @@ public class Item {
 
 	public int compareMinPrice(int minPrice) {
 		return Math.min(this.price, minPrice);
+	}
+
+	@Override
+	public void check(String input) {
+		isBlank(input);
 	}
 }

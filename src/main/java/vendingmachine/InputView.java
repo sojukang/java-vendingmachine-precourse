@@ -12,6 +12,7 @@ public class InputView {
 		System.out.println(message);
 		String input = readLine();
 		gettable.check(input);
+		System.out.println();
 		return input;
 	}
 
@@ -31,5 +32,9 @@ public class InputView {
 
 	public static String getItemStatus() {
 		return repeatInput(Messages.GET_ITEM_STATUS, new Items());
+	}
+
+	public static String getItemToBuy() {
+		return getUserInput(Messages.GET_ITEM_TO_BUY, new Item());
 	}
 }

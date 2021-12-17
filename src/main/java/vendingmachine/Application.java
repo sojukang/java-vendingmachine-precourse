@@ -6,8 +6,8 @@ public class Application {
 		machine.saveInStock(InputView.getItemStatus());
 		machine.registerUserMoney(new UserMoney(InputView.getUserMoney()));
 		while (machine.canBuySomething()) {
-			machine.buyItem("콜라");
-			machine.buyItem("사이다");
+			ResultView.printRemainUserMoney(machine);
+			machine.buyItem(InputView.getItemToBuy());
 		}
 		machine.returnChange();
 	}

@@ -28,4 +28,8 @@ public class UserMoney implements Gettable {
 	public int getNoOfChange(int coinValue) {
 		return this.userMoney / coinValue;
 	}
+
+	public int getUserMoney() {
+		return this.userMoney;
+	}
 }
