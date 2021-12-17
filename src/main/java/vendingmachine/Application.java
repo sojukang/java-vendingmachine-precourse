@@ -12,6 +12,7 @@ public class Application {
 		machine.saveInStock(InputView.getItemStatus());
 		machine.registerUserMoney(new UserMoney(InputView.getUserMoney()));
 		buyItem(machine);
+		ResultView.printRemainUserMoney(machine);
 		ResultView.printChange(machine.returnChange());
 	}
 

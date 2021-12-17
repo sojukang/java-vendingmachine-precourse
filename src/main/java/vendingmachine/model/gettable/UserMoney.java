@@ -21,7 +21,9 @@ public class UserMoney implements Gettable {
 	}
 
 	public void buy(int price) {
-		userMoney -= price;
+		if (userMoney >= price) {
+			userMoney -= price;
+		}
 	}
 
 	public boolean canNotBuy(int minPrice) {

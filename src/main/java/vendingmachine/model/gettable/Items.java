@@ -47,8 +47,9 @@ public class Items implements Gettable {
 	public int minPrice() {
 		int minPrice = Integer.MAX_VALUE;
 		for (Item item : this.items.values()) {
-
-			minPrice = item.compareMinPrice(minPrice);
+			if (item.hasStock()) {
+				minPrice = item.compareMinPrice(minPrice);
+			}
 		}
 		return minPrice;
 	}
