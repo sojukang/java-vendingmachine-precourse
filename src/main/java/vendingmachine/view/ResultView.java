@@ -2,7 +2,7 @@ package vendingmachine.view;
 
 import java.util.Map;
 
-import vendingmachine.model.gettable.Coins;
+import vendingmachine.model.Coins;
 import vendingmachine.model.VendingMachine;
 
 public class ResultView {

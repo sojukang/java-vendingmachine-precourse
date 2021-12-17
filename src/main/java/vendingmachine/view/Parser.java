@@ -16,10 +16,10 @@ public class Parser {
 	}
 
 	public static String removeBracket(String input) {
-		if (input.charAt(0) != '[' || input.charAt(input.length() - 1) != ']') {
+		if (input.charAt(Index.LEFT_BRACKET) != '[' || input.charAt(Index.RIGHT_BRACKET(input)) != ']') {
 			throw new IllegalArgumentException(Messages.Error.INVALID_ITEM);
 		}
-		return input.substring(1, input.length() - 1);
+		return input.substring(Index.LEFT_BRACKET, Index.RIGHT_BRACKET(input));
 	}
 
 	public static List<String> removeBlank(String[] input) {

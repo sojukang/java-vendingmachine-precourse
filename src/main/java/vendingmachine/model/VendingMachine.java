@@ -5,8 +5,6 @@ import static camp.nextstep.edu.missionutils.Randoms.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import vendingmachine.model.gettable.Coin;
-import vendingmachine.model.gettable.Coins;
 import vendingmachine.model.gettable.Items;
 import vendingmachine.model.gettable.UserMoney;
 

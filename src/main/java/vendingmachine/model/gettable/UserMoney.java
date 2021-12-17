@@ -1,7 +1,6 @@
 package vendingmachine.model.gettable;
 
 import vendingmachine.ValidationUtils;
-import vendingmachine.model.gettable.Gettable;
 
 public class UserMoney implements Gettable {
 	private int userMoney;
@@ -14,6 +13,7 @@ public class UserMoney implements Gettable {
 
 	}
 
+	@Override
 	public void check(String input) {
 		int userMoney = ValidationUtils.validNoFormat(input);
 		ValidationUtils.validUnitNo(userMoney);

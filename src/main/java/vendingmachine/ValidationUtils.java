@@ -4,7 +4,6 @@ import vendingmachine.view.Messages;
 
 public class ValidationUtils {
 	private static final int UNIT_NO = 10;
-	private static final int ZERO_NO = 0;
 	private static final int MIN_REMAINS = 0;
 	private static final int MIN_USER_MONEY = 100;
 
@@ -17,7 +16,7 @@ public class ValidationUtils {
 	}
 
 	public static void validUnitNo(int input) {
-		if (input % UNIT_NO != ZERO_NO) {
+		if (input % UNIT_NO != 0) {
 			throw new IllegalArgumentException(Messages.Error.INVALID_UNIT_NO);
 		}
 	}

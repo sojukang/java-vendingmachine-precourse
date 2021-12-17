@@ -56,6 +56,11 @@ public class Item implements Gettable {
 		}
 	}
 
+	@Override
+	public void check(String input) {
+		isBlank(input);
+	}
+
 	public void buy(UserMoney userMoney) {
 		checkStock();
 		subCount();
@@ -95,8 +100,4 @@ public class Item implements Gettable {
 		return Math.min(this.price, minPrice);
 	}
 
-	@Override
-	public void check(String input) {
-		isBlank(input);
-	}
 }
