@@ -1,6 +1,9 @@
 package vendingmachine;
 
-import javax.sound.midi.Soundbank;
+import vendingmachine.model.gettable.UserMoney;
+import vendingmachine.model.VendingMachine;
+import vendingmachine.view.InputView;
+import vendingmachine.view.ResultView;
 
 public class Application {
 	public static void main(String[] args) {

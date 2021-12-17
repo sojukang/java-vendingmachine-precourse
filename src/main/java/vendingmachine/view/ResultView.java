@@ -1,6 +1,9 @@
-package vendingmachine;
+package vendingmachine.view;
 
 import java.util.Map;
+
+import vendingmachine.model.gettable.Coins;
+import vendingmachine.model.VendingMachine;
 
 public class ResultView {
 	public static void printRemainUserMoney(VendingMachine machine) {

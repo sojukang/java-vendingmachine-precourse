@@ -1,4 +1,7 @@
-package vendingmachine;
+package vendingmachine.model.gettable;
+
+import vendingmachine.ValidationUtils;
+import vendingmachine.model.gettable.Gettable;
 
 public class UserMoney implements Gettable {
 	private int userMoney;

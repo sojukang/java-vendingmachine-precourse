@@ -1,7 +1,11 @@
-package vendingmachine;
+package vendingmachine.model.gettable;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import vendingmachine.view.Messages;
+import vendingmachine.view.Parser;
+import vendingmachine.ValidationUtils;
 
 public class Items implements Gettable {
 	private final Map<String, Item> items;
@@ -26,7 +30,7 @@ public class Items implements Gettable {
 
 	private boolean hasItem(String itemName) {
 		if (!this.items.containsKey(itemName)) {
-			throw new IllegalArgumentException(Messages.ERROR_NOT_IN_STOCK);
+			throw new IllegalArgumentException(Messages.Error.NOT_IN_STOCK);
 		}
 		return true;
 	}

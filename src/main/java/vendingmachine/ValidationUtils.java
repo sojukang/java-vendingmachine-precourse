@@ -1,5 +1,7 @@
 package vendingmachine;
 
+import vendingmachine.view.Messages;
+
 public class ValidationUtils {
 	private static final int UNIT_NO = 10;
 	private static final int ZERO_NO = 0;
@@ -10,19 +12,19 @@ public class ValidationUtils {
 		try {
 			return Integer.parseInt(input);
 		} catch (NumberFormatException e) {
-			throw new IllegalArgumentException(Messages.ERROR_NOT_INT);
+			throw new IllegalArgumentException(Messages.Error.NOT_INT);
 		}
 	}
 
 	public static void validUnitNo(int input) {
 		if (input % UNIT_NO != ZERO_NO) {
-			throw new IllegalArgumentException(Messages.ERROR_INVALID_UNIT_NO);
+			throw new IllegalArgumentException(Messages.Error.INVALID_UNIT_NO);
 		}
 	}
 
 	private static void moneyGreaterThanMin(int min, int money) {
 		if (money < min) {
-			throw new IllegalArgumentException(Messages.ERROR_SMALLER_THAN_MIN);
+			throw new IllegalArgumentException(Messages.Error.SMALLER_THAN_MIN);
 		}
 	}
 
@@ -36,13 +38,13 @@ public class ValidationUtils {
 
 	public static void isBlank(String input) {
 		if (input.isEmpty()) {
-			throw new IllegalArgumentException(Messages.ERROR_BLANK);
+			throw new IllegalArgumentException(Messages.Error.BLANK);
 		}
 	}
 
 	public static void isPositive(int input) {
 		if (input <= 0) {
-			throw new IllegalArgumentException(Messages.ERROR_GREATER_THAN_ZERO);
+			throw new IllegalArgumentException(Messages.Error.GREATER_THAN_ZERO);
 		}
 	}
 }

@@ -1,10 +1,12 @@
-package vendingmachine;
+package vendingmachine.model;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Map;
 import java.util.TreeMap;
+
+import vendingmachine.model.gettable.UserMoney;
 
 public class Coins {
 

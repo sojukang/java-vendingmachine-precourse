@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import vendingmachine.view.Messages;
+
 public class ValidationUtilsTest {
 	@ParameterizedTest
 	@ValueSource(strings = {"[", "a", "a1", "1.1"})
@@ -15,7 +17,7 @@ public class ValidationUtilsTest {
 		assertThatThrownBy(() -> {
 			ValidationUtils.validNoFormat(input);
 		}).isInstanceOf(IllegalArgumentException.class)
-			.hasMessage(Messages.ERROR_NOT_INT);
+			.hasMessage(Messages.Error.NOT_INT);
 	}
 
 	@Test
@@ -25,7 +27,7 @@ public class ValidationUtilsTest {
 		assertThatThrownBy(() -> {
 			ValidationUtils.validUnitNo(input);
 		}).isInstanceOf(IllegalArgumentException.class)
-			.hasMessage(Messages.ERROR_INVALID_UNIT_NO);
+			.hasMessage(Messages.Error.INVALID_UNIT_NO);
 	}
 
 	@Test
@@ -37,7 +39,7 @@ public class ValidationUtilsTest {
 			ValidationUtils.moneyGreaterThanRemainsMin(min1);
 			ValidationUtils.moneyGreaterThanUserMoneyMin(min2);
 		}).isInstanceOf(IllegalArgumentException.class)
-			.hasMessage(Messages.ERROR_SMALLER_THAN_MIN);
+			.hasMessage(Messages.Error.SMALLER_THAN_MIN);
 
 	}
 }

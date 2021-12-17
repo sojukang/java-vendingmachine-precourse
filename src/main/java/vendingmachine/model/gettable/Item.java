@@ -1,9 +1,13 @@
-package vendingmachine;
+package vendingmachine.model.gettable;
 
 import static vendingmachine.ValidationUtils.*;
 
 import java.util.List;
 import java.util.Objects;
+
+import vendingmachine.model.Index;
+import vendingmachine.view.Messages;
+import vendingmachine.view.Parser;
 
 public class Item implements Gettable {
 	private static final int ALL_PROPERTIES = 3;
@@ -48,7 +52,7 @@ public class Item implements Gettable {
 
 	private static void GotAllProperties(List<String> itemStatus) {
 		if (itemStatus.size() != ALL_PROPERTIES) {
-			throw new IllegalArgumentException(Messages.ERROR_INVALID_ITEM);
+			throw new IllegalArgumentException(Messages.Error.INVALID_ITEM);
 		}
 	}
 
@@ -64,7 +68,7 @@ public class Item implements Gettable {
 
 	public void checkStock() {
 		if (!hasStock()) {
-			throw new IllegalArgumentException(Messages.ERROR_NOT_IN_STOCK);
+			throw new IllegalArgumentException(Messages.Error.NOT_IN_STOCK);
 		}
 	}
 

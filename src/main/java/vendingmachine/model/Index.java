@@ -1,4 +1,4 @@
-package vendingmachine;
+package vendingmachine.model;
 
 public class Index {
 	public static final int NAME = 0;
