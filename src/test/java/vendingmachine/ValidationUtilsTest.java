@@ -27,4 +27,17 @@ public class ValidationUtilsTest {
 		}).isInstanceOf(IllegalArgumentException.class)
 			.hasMessage(Messages.ERROR_INVALID_UNIT_NO);
 	}
+
+	@Test
+	@DisplayName("x원 미만일 때 검증 테스트")
+	void moneyGreaterThanTest() {
+		int min1 = -10;
+		int min2 = 50;
+		assertThatThrownBy(() -> {
+			ValidationUtils.moneyGreaterThanRemainsMin(min1);
+			ValidationUtils.moneyGreaterThanUserMoneyMin(min2);
+		}).isInstanceOf(IllegalArgumentException.class)
+			.hasMessage(Messages.ERROR_SMALLER_THAN_MIN);
+
+	}
 }
