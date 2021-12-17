@@ -69,4 +69,12 @@ public class Item {
 	public int hashCode() {
 		return Objects.hash(name);
 	}
+
+	public boolean hasStock() {
+		return this.count > 0;
+	}
+
+	public int compareMinPrice(int minPrice) {
+		return Math.min(this.price, minPrice);
+	}
 }

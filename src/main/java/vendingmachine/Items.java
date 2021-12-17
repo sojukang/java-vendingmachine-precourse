@@ -26,4 +26,21 @@ public class Items {
 		}
 		return true;
 	}
+
+	public boolean isAllOutOfStock() {
+		for (Item item : this.items.values()) {
+			if (item.hasStock()) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public int minPrice() {
+		int minPrice = Integer.MAX_VALUE;
+		for (Item item : this.items.values()) {
+			minPrice = item.compareMinPrice(minPrice);
+		}
+		return minPrice;
+	}
 }
