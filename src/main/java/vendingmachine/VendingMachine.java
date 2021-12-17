@@ -48,7 +48,7 @@ public class VendingMachine {
 		this.items.buyItem(itemName, this.userMoney);
 	}
 
-	private boolean canBuySomething() {
+	public boolean canBuySomething() {
 		return !this.items.isAllOutOfStock() && !this.userMoney.canNotBuy(this.items.minPrice());
 	}
 

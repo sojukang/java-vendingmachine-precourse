@@ -45,4 +45,11 @@ public class ValidationUtils {
 			throw new IllegalArgumentException(Messages.ERROR_GREATER_THAN_ZERO);
 		}
 	}
+
+	public static int validMoneyInput(String input) {
+		int money = validNoFormat(input);
+		validUnitNo(money);
+		moneyGreaterThanRemainsMin(money);
+		return money;
+	}
 }
