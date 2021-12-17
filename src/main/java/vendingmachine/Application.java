@@ -3,6 +3,7 @@ package vendingmachine;
 public class Application {
 	public static void main(String[] args) {
 		VendingMachine machine = new VendingMachine(InputView.getRemains());
+		ResultView.printRemainCoins(machine);
 		machine.saveInStock(InputView.getItemStatus());
 		machine.registerUserMoney(new UserMoney(InputView.getUserMoney()));
 		while (machine.canBuySomething()) {

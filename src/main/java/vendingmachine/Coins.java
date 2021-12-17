@@ -1,6 +1,7 @@
 package vendingmachine;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Comparator;
 import java.util.Map;
 import java.util.TreeMap;
@@ -34,5 +35,9 @@ public class Coins {
 		userMoney.buy(coinCount * coinVal);
 		coins.put(coinVal, coins.get(coinVal) - coinCount);
 		return coinCount;
+	}
+
+	public Collection<Map.Entry<Integer, Integer>> entrySet() {
+		return this.coins.entrySet();
 	}
 }

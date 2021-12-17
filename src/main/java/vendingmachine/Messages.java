@@ -12,4 +12,5 @@ public class Messages {
 	public static final String GET_USER_MONEY = "투입 금액을 입력해 주세요.";
 	public static final String GET_ITEM_STATUS = "상품명과 가격, 수량을 입력해 주세요.";
 	public static final String GET_ITEM_TO_BUY = "구매할 상품명을 입력해 주세요.";
+	public static final String REMAINS_MESSAGE = "자판기가 보유한 동전";
 }

@@ -59,4 +59,8 @@ public class VendingMachine {
 	public int getRemainUserMoney() {
 		return this.userMoney.getUserMoney();
 	}
+
+	public Coins getCoins() {
+		return this.coins;
+	}
 }
