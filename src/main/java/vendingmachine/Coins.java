@@ -19,7 +19,9 @@ public class Coins {
 	}
 
 	public void addCount(int coinVal, int count) {
-		coins.put(coinVal, coins.get(coinVal) + count);
+		if (count > 0) {
+			coins.put(coinVal, coins.get(coinVal) + count);
+		}
 	}
 
 	public Coins getChange(UserMoney userMoney) {

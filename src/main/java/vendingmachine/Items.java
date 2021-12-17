@@ -3,7 +3,7 @@ package vendingmachine;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Items implements Gettable{
+public class Items implements Gettable {
 	private final Map<String, Item> items;
 
 	public Items(String userInputItems) {
@@ -33,8 +33,8 @@ public class Items implements Gettable{
 
 	public boolean isAllOutOfStock() {
 		for (Item item : this.items.values()) {
-			if (item.hasStock()) {
-				return false;
+			 if (item.hasStock()) {
+				 return false;
 			}
 		}
 		return true;
@@ -43,6 +43,7 @@ public class Items implements Gettable{
 	public int minPrice() {
 		int minPrice = Integer.MAX_VALUE;
 		for (Item item : this.items.values()) {
+
 			minPrice = item.compareMinPrice(minPrice);
 		}
 		return minPrice;
@@ -50,6 +51,7 @@ public class Items implements Gettable{
 
 	@Override
 	public void check(String input) {
+		ValidationUtils.isBlank(input);
 		String[] itemsToAdd = Parser.splitBySemicolon(input);
 		for (String itemString : itemsToAdd) {
 			Item.validItemStatus(itemString);

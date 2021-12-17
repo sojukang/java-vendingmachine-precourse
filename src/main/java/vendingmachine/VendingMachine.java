@@ -63,4 +63,8 @@ public class VendingMachine {
 	public Coins getCoins() {
 		return this.coins;
 	}
+
+	public Items getItems() {
+		return this.items;
+	}
 }

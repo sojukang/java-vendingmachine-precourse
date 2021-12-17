@@ -41,15 +41,8 @@ public class ValidationUtils {
 	}
 
 	public static void isPositive(int input) {
-		if (input <= 0 ) {
+		if (input <= 0) {
 			throw new IllegalArgumentException(Messages.ERROR_GREATER_THAN_ZERO);
 		}
-	}
-
-	public static int validMoneyInput(String input) {
-		int money = validNoFormat(input);
-		moneyGreaterThanRemainsMin(money);
-		validUnitNo(money);
-		return money;
 	}
 }

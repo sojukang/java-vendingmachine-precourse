@@ -62,10 +62,14 @@ public class Item implements Gettable {
 		this.count--;
 	}
 
-	private void checkStock() {
-		if (count <= 0) {
+	public void checkStock() {
+		if (!hasStock()) {
 			throw new IllegalArgumentException(Messages.ERROR_NOT_IN_STOCK);
 		}
+	}
+
+	public boolean hasStock() {
+		return count > 0;
 	}
 
 	@Override
@@ -81,10 +85,6 @@ public class Item implements Gettable {
 	@Override
 	public int hashCode() {
 		return Objects.hash(name);
-	}
-
-	public boolean hasStock() {
-		return this.count > 0;
 	}
 
 	public int compareMinPrice(int minPrice) {

@@ -8,6 +8,7 @@ public class Parser {
 	public static List<String> parseItemStatus(String input) {
 		return removeBlank(splitByComma(removeBracket(input)));
 	}
+
 	public static String[] splitBySemicolon(String input) {
 		return input.split(";");
 	}
