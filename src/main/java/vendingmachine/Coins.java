@@ -5,8 +5,6 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.TreeMap;
 
-import com.sun.javafx.css.StyleCacheEntry;
-
 public class Coins {
 
 	private Map<Integer, Integer> coins;
@@ -19,7 +17,22 @@ public class Coins {
 			.forEach(coin -> coins.put(coin.getValue(), 0));
 	}
 
-	public void addCount(int coin, int count) {
-		coins.put(coin, coins.get(coin) + count);
+	public void addCount(int coinVal, int count) {
+		coins.put(coinVal, coins.get(coinVal) + count);
+	}
+
+	public Coins getChange(UserMoney userMoney) {
+		Coins change = new Coins();
+		for (int coin : this.coins.keySet()) {
+			change.addCount(coin, getCount(coin, userMoney));
+		}
+		return change;
+	}
+
+	private int getCount(int coinVal, UserMoney userMoney) {
+		int coinCount = Math.min(coins.get(coinVal), userMoney.getNoOfChange(coinVal));
+		userMoney.buy(coinCount * coinVal);
+		coins.put(coinVal, coins.get(coinVal) - coinCount);
+		return coinCount;
 	}
 }

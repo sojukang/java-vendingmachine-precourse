@@ -7,8 +7,13 @@ import java.util.List;
 
 public class VendingMachine {
 	private static final int GENERATE_ALL_COINS = 0;
+	private final Coins coins;
 	private UserMoney userMoney;
 	private Items items;
+
+	public VendingMachine(int remains) {
+		this.coins = generateRemainCoins(remains);
+	}
 
 	private int generateRandomCoin() {
 		List<Integer> coins = new ArrayList<>();
@@ -45,5 +50,9 @@ public class VendingMachine {
 
 	private boolean canBuySomething() {
 		return !this.items.isAllOutOfStock() && !this.userMoney.canNotBuy(this.items.minPrice());
+	}
+
+	public Coins returnChange() {
+		return this.coins.getChange(userMoney);
 	}
 }

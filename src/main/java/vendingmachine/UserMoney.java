@@ -21,4 +21,8 @@ public class UserMoney {
 	public boolean canNotBuy(int minPrice) {
 		return userMoney <= minPrice;
 	}
+
+	public int getNoOfChange(int coinValue) {
+		return this.userMoney / coinValue;
+	}
 }
