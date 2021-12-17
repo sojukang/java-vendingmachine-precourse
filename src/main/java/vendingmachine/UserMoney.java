@@ -1,17 +1,20 @@
 package vendingmachine;
 
-public class UserMoney {
+public class UserMoney implements Gettable {
 	private int userMoney;
 
-	public UserMoney(String input) {
-		this.userMoney = validUserMoney(input);
+	public UserMoney(String userMoney) {
+		this.userMoney = Integer.parseInt(userMoney);
 	}
 
-	private int validUserMoney(String input) {
+	public UserMoney() {
+
+	}
+
+	public void check(String input) {
 		int userMoney = ValidationUtils.validNoFormat(input);
 		ValidationUtils.validUnitNo(userMoney);
 		ValidationUtils.moneyGreaterThanUserMoneyMin(userMoney);
-		return userMoney;
 	}
 
 	public void buy(int price) {

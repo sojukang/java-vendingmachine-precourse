@@ -5,21 +5,29 @@ import static camp.nextstep.edu.missionutils.Console.*;
 public class InputView {
 
 	public static int getRemains() {
-		return repeatInput(Messages.GET_REMAINS);
+		return Integer.parseInt(repeatInput(Messages.GET_REMAINS, new Remains()));
 	}
 
-	public static int getUserInput(String message) {
+	public static String getUserInput(String message, Gettable gettable) {
 		System.out.println(message);
-		return ValidationUtils.validMoneyInput(readLine());
+		String input = readLine();
+		gettable.check(input);
+		return input;
 	}
 
-	private static int repeatInput(String message) {
+	private static String repeatInput(String message, Gettable gettable) {
 		while (true) {
 			try {
-				return getUserInput(message);
+				return getUserInput(message, gettable);
 			} catch (IllegalArgumentException e) {
 				System.out.println(e.getMessage());
 			}
 		}
 	}
+
+	public static String getUserMoney() {
+		return repeatInput(Messages.GET_USER_MONEY, new UserMoney());
+	}
+
+
 }

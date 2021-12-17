@@ -48,8 +48,8 @@ public class ValidationUtils {
 
 	public static int validMoneyInput(String input) {
 		int money = validNoFormat(input);
-		validUnitNo(money);
 		moneyGreaterThanRemainsMin(money);
+		validUnitNo(money);
 		return money;
 	}
 }
