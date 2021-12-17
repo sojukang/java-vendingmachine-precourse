@@ -8,6 +8,7 @@ import java.util.List;
 public class VendingMachine {
 	private static final int GENERATE_ALL_COINS = 0;
 	private UserMoney userMoney;
+	private Items items;
 
 	private int generateRandomCoin() {
 		List<Integer> coins = new ArrayList<>();
@@ -32,5 +33,9 @@ public class VendingMachine {
 
 	public void registerUserMoney(UserMoney userMoney) {
 		this.userMoney = userMoney;
+	}
+
+	public void saveInStock(String userInputItems) {
+		this.items = new Items(userInputItems);
 	}
 }
