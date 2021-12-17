@@ -1,7 +1,7 @@
 package vendingmachine;
 
 public class UserMoney {
-	private final int userMoney;
+	private int userMoney;
 
 	public UserMoney(String input) {
 		this.userMoney = validUserMoney(input);
@@ -12,5 +12,9 @@ public class UserMoney {
 		ValidationUtils.validUnitNo(userMoney);
 		ValidationUtils.moneyGreaterThanUserMoneyMin(userMoney);
 		return userMoney;
+	}
+
+	public void buy(int price) {
+		userMoney -= price;
 	}
 }

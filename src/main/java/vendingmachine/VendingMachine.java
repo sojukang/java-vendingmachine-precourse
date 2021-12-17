@@ -38,4 +38,8 @@ public class VendingMachine {
 	public void saveInStock(String userInputItems) {
 		this.items = new Items(userInputItems);
 	}
+
+	public void buyItem(String itemName) {
+		this.items.buyItem(itemName, this.userMoney);
+	}
 }

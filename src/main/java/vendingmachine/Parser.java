@@ -26,4 +26,8 @@ public class Parser {
 	public static String[] splitByComma(String input) {
 		return input.split(",");
 	}
+
+	public static String parseName(String input) {
+		return parseItemStatus(input).get(Index.NAME);
+	}
 }
